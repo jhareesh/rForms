@@ -4,14 +4,37 @@
   <div>
     <label>USERNAME : </label>
     <input type="text" class="form-control" formControlName="name">
+    <!-- applying validation -->
+    <div *ngIf="form.controls['name'].touched && form.controls['name'].invalid">
+      <!-- validating when username is empty -->
+      <small *ngIf="form.controls['name'].errors && form.controls['name'].errors['required']">Username is required!</small>
+      <!-- validating when username is mimimum length  -->
+      <small *ngIf="form.controls['name'].errors && form.controls['name'].errors['minlength'] ">Username should have minimum 4 characters!</small>
+      <!-- validating when username is maximum length  -->
+      <small *ngIf="form.controls['name'].errors && form.controls['name'].errors['maxlength'] ">Username should have maximum 8 characters!</small>
+    </div>
   </div>
   <div>
     <label>PHONE : </label>
     <input type="text" class="form-control" formControlName="phone">
+    <!-- applying validation -->
+    <div *ngIf="form.controls['phone'].touched && form.controls['phone'].invalid">
+      <!-- validating when phone number is empty -->
+      <small *ngIf="form.controls['phone'].errors && form.controls['phone'].errors['required']">Phone number is required!</small>
+      <!-- validating when phone number is matching pattern  -->
+      <small *ngIf="form.controls['phone'].errors && form.controls['phone'].errors['pattern'] "> Phone number is in invlid pattern!</small>
+    </div>
   </div>
   <div>
     <label>EMAIL : </label>
     <input type="text" class="form-control" formControlName="email">
+    <!-- applying validation -->
+    <div *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+      <!-- validating when phone number is empty -->
+      <small *ngIf="form.controls['email'].errors && form.controls['email'].errors['required']">Email is required!</small>
+      <!-- validating when phone number is matching pattern  -->
+      <small *ngIf="form.controls['email'].errors && form.controls['email'].errors['pattern'] "> Email adress is in invlid pattern!</small>
+    </div>
   </div>
  <button (click)="signup()">SUBMIT</button>
 </form>

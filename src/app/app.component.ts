@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
+//importing the FormGroup and FormControl 
 import { FormGroup,FormControl } from '@angular/forms';
-
+//importing the Validators
+import { Validators} from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,9 +14,10 @@ export class AppComponent {
   
   //ACHIEVING TWO WAY INTERACTIONu
   form = new FormGroup({
-    name:new FormControl(),
-    phone : new FormControl(),
-    email : new FormControl()
+    //creating applying validation using validators
+    name:new FormControl("",[Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
+    phone : new FormControl("",[Validators.required,Validators.pattern("[7-9]{1}[0-9]{9}")]),
+    email : new FormControl("",[Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")])
   })
 
   //defining the event
